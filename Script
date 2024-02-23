@@ -1,0 +1,17 @@
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+
+if brightLoop then
+    brightLoop:Disconnect()
+end
+
+local function brightFunc()
+    Lighting.Brightness =   3
+    Lighting.FogEnd =   100000
+    Lighting.GlobalShadows = false
+    Lighting.OutdoorAmbient = Color3.fromRGB(128,   128,   128)
+end
+
+brightLoop = RunService.RenderStepped:Connect(brightFunc)
+
+game.Workspace:SetHiddenProperty("brightLoop", true)
